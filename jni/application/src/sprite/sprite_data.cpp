@@ -139,6 +139,8 @@ SpriteData::parse_action(const Reader& lisp, const std::string& basedir)
     if (action->hitbox_w < 1) action->hitbox_w = max_w - action->x_offset;
     if (action->hitbox_h < 1) action->hitbox_h = max_h - action->y_offset;
   }
+  std::stringstream msg;
+  msg << "aki";
   actions[action->name] = action;
 }
 

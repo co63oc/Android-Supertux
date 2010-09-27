@@ -63,8 +63,8 @@ public class MainActivity extends Activity {
 		new AlertDialog.Builder(this)
 		.setTitle(getString(R.string.app_name) + " Alpha Testing")
 		.setIcon(android.R.drawable.ic_dialog_info)
-		.setMessage("Do you want to send debug info to the dev? Please specify what problem ocurred.\nIf you are experiencing problems you can try to delete data files & download them again.\n Clicking OK will send the latest debug from the game, if you just wanna play, click NO.")
-		.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+		.setMessage("Do you want to send a bug report to the dev? Please specify what problem ocurred.\nIf you are experiencing problems you can try to delete data files & download them again.\n Clicking OK will send the latest debug from the game, if you just wanna play, click NO.")
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
 			public void onClick(DialogInterface dialog, int whichButton){
 				collectAndSendLog();
 			}
@@ -111,7 +111,6 @@ public class MainActivity extends Activity {
 
 
 		mLoadLibraryStub = new LoadLibrary();
-		mAudioThread = new AudioThread(this);
 	}
 
 	final Handler loadingDialogHandler = new Handler();
@@ -241,7 +240,6 @@ public class MainActivity extends Activity {
 
 	private DemoGLSurfaceView mGLView = null;
 	private LoadLibrary mLoadLibraryStub = null;
-	private AudioThread mAudioThread = null;
 	private PowerManager.WakeLock wakeLock = null;
 	private static DataDownloader downloader = null;
 	private TextView _tv = null;

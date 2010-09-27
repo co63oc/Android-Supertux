@@ -28,7 +28,7 @@ LOCAL_CFLAGS := $(foreach D, $(APP_SUBDIRS), -I$(LOCAL_PATH)/$(D)) \
 				-DGL_VERSION_ES_CM_1_0 \
 				-DHAVE_LIBCURL \
 				-Wall -Wextra -funit-at-a-time -fno-strict-aliasing
-				#-DDONATE_VERSION
+				#-DDONATE_VERSION 
 				
 LOCAL_CFLAGS += $(APPLICATION_ADDITIONAL_CFLAGS)
 

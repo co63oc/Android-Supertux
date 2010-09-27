@@ -929,6 +929,8 @@ public class GLSurfaceView_SDL extends SurfaceView implements SurfaceHolder.Call
                 /*
                  *  Update the asynchronous state (window size)
                  */
+              while(true) { // Loop until we're re-created GL context and successfully called swap()
+
                 int w, h;
                 boolean changed;
                 synchronized (this) {
@@ -974,7 +976,12 @@ public class GLSurfaceView_SDL extends SurfaceView implements SurfaceHolder.Call
                      * Once we're done with GL, we need to call swapBuffers()
                      * to instruct the system to display the rendered frame
                      */
-                return mEglHelper.swap();
+                if( mEglHelper.swap() )
+                    return true;
+                // We've lost GL context - recreate it
+                mEglHelper.finish();
+                mNeedStart = true;
+              }
 
             } catch (java.lang.InterruptedException e) {
                return false;

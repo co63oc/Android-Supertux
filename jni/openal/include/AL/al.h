@@ -6,15 +6,14 @@ extern "C" {
 #endif
 
 #if defined(_WIN32) && !defined(_XBOX)
- /* _OPENAL32LIB is deprecated */
- #if defined(AL_BUILD_LIBRARY) || defined (_OPENAL32LIB)
+ #if defined(AL_BUILD_LIBRARY)
   #define AL_API __declspec(dllexport)
  #else
   #define AL_API __declspec(dllimport)
  #endif
 #else
  #if defined(AL_BUILD_LIBRARY) && defined(HAVE_GCC_VISIBILITY)
-  #define AL_API __attribute__((visibility("default")))
+  #define AL_API __attribute__((visibility("protected")))
  #else
   #define AL_API extern
  #endif
@@ -53,7 +52,7 @@ typedef char ALboolean;
 typedef char ALchar;
 
 /** signed 8-bit 2's complement integer */
-typedef char ALbyte;
+typedef signed char ALbyte;
 
 /** unsigned 8-bit integer */
 typedef unsigned char ALubyte;
@@ -117,8 +116,7 @@ typedef void ALvoid;
 #define AL_CONE_OUTER_ANGLE                       0x1002
 
 /**
- * Specify the pitch to be applied, either at source,
- *  or on mixer results, at listener.
+ * Specify the pitch to be applied at source.
  * Range:   [0.5-2.0]
  * Default: 1.0
  */

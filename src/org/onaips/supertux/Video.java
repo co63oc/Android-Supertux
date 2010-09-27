@@ -74,7 +74,7 @@ abstract class DifferentTouchInput
 			boolean masked=false;
 			int action=e.getAction();
 
-
+ 
 			for (int i = 0; i<e.getPointerCount(); i++) {
 
 				switch(action & MotionEvent.ACTION_MASK) {
@@ -260,7 +260,6 @@ class DemoGLSurfaceView extends GLSurfaceView_SDL {
 
 		touchInput = DifferentTouchInput.getInstance();
 		setEGLConfigChooser(Globals.NeedDepthBuffer);
-		//accelerometer = new AccelerometerReader(context);
 		mRenderer = new DemoRenderer(context);
 		setRenderer(mRenderer);
 	}
@@ -283,8 +282,6 @@ class DemoGLSurfaceView extends GLSurfaceView_SDL {
 
 	public void exitApp() {
 		mRenderer.exitApp();
-		// 		 accelerometer.stop();
-		// 		 accelerometer = null;
 	};
 
 
@@ -303,7 +300,6 @@ class DemoGLSurfaceView extends GLSurfaceView_SDL {
 
 	DemoRenderer mRenderer;
 	Activity mParent;
-	// 	AccelerometerReader accelerometer = null;
 	DifferentTouchInput touchInput = null;
 
 	public static native void nativeMouse( int x, int y, int action, int pointerId );
